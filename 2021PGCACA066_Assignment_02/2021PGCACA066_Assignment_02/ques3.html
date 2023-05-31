@@ -1,0 +1,160 @@
+<html>
+	<head>
+		<title>this is lab assignment</title>
+		<style>
+
+			input{
+				font-size: 30px;
+				font-weight: bold;
+				height: 100%;
+				width: 100%;
+			}
+
+			button{
+				text-align: center;
+				margin-left: 40%;
+				margin-top: 5%;
+				height: 10%;
+				width: 20%;
+				font-size: 30px;
+				font-weight: bold;
+			}
+			
+			#total{
+				height: 10%;
+				width: 10%;
+				
+			}
+		</style>
+	</head>
+	<body id="body">
+		
+		<h3 id="q">3) Create a Grocery List application using Javascript. On the HTML page, there will be
+			two textboxes for item and price. There will be an “Add” button, that will add that
+			item along with its price to a grocery list (a table) shown below the textboxes and
+			“Add” button. The list will show total price as the last row, and will be updated on
+			each addition. Each row in the table will also have a delete button at the end, that
+			will delete the item from list dynamically, and will update the total price as well.</h3>
+		<hr/>
+
+		<form action="#">
+			
+			<table>
+				
+			</table>	
+
+			<h3 id="total"></h3>
+
+			<button id="add">ADD_MORE..</button>
+
+		</form>
+
+		<script>
+			// testing heading
+			let question = document.getElementById("q");
+
+			let index = 0;
+			let body = document.getElementById("body");
+			let table = document.getElementsByTagName("table");
+			let totalPrice = document.getElementById("total");
+			let addButton = document.getElementById("add");
+
+			// getting all rows of table 1 and 2	
+
+
+			let firstTableRows = document.getElementsByClassName("firstTable_rows");
+			let secondTableRows = document.getElementsByClassName("secondTable_rows");
+
+			addButton.addEventListener("click",addMore);
+			
+			function addMore(){
+				totalPrice.innerHTML = calculateTotalPrice();
+				createRow();
+			}
+
+			function calculateTotalPrice(){
+				let price = 0;
+				let priceBoxes = document.getElementsByClassName("price");
+
+				for(let i=0;i<priceBoxes.length;i++){
+					price += Number(priceBoxes[i].value);
+				}
+
+				return price;
+			}
+
+			function createRow(){
+				// creating row
+				index++;
+				let newRow = document.createElement("tr");
+
+
+				// setting properties
+				newRow.id = index+"r";
+				newRow.classList.add("firstTable_rows");
+
+				// obtaining columns
+				let columns = createColumns();
+
+				newRow.appendChild(columns[0]);
+				newRow.appendChild(columns[1]);
+				newRow.appendChild(columns[2]);
+
+				table[0].appendChild(newRow);
+			}
+
+			function createColumns(){
+				let firstColumn = document.createElement("td");			
+				let secondColumn = document.createElement("td");			
+				let thirdColumn = document.createElement("td");			
+				
+				// obtaining all childs
+				let inputs = createInputs();
+
+				// appending childs
+				firstColumn.appendChild(inputs[0]);
+				secondColumn.appendChild(inputs[1]);
+				thirdColumn.appendChild(inputs[2]);
+
+				return [firstColumn,secondColumn,thirdColumn];
+			}
+
+			function createInputs(){
+				// incrementing index for spoting elements 
+
+				let inputItem = document.createElement("input");
+				let inputPrice = document.createElement("input");
+				let inputButton = document.createElement("input");
+
+				// setting properties
+
+				inputPrice.classList.add("price");
+				inputPrice.type = "number";
+				inputPrice.classList.add("price");
+				inputButton.type = "button";
+				inputButton.value = "DELETE";
+				inputButton.id = index+"b";
+				
+				inputButton.addEventListener("click",deleteRowAt);
+
+				return [inputItem,inputPrice,inputButton];
+			}
+
+			// function to delete row
+
+			function deleteRowAt(){
+				let index = this.id;
+				let deleteRow = document.getElementById(parseInt(index)+"r");
+
+				deleteRow.remove();
+			}
+
+			// testing functions
+			function test(){
+				body.style.backgroundColor = "red";
+				q.innerHTML = "test";
+			}
+			
+		</script>
+	</body>
+</html>

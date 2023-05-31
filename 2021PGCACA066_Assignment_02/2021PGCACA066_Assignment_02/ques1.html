@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        table{
+
+            border-style:solid;
+            border-radius: 10px;
+            height:400px;
+            width:400px;
+            background-color:rgb(215, 248, 250);
+            
+            
+        }
+        #btn{
+            height:100px;
+            width:100px;
+        }
+        #btn:hover{
+            background-color:rgb(224, 144, 238);
+        }
+        #text{
+            width:400px;
+            height:80px;
+        }
+       
+    </style>
+</head>
+<body>
+    <p>1) Create a calculator with digit buttons and *, /, +, -, = buttons. There will be a textbox
+        as calculator screen, which will be updated according to the clicked button. The
+        result will also be shown on the calculator screen, on clicking = button.</p>
+    <h1 align="center">CALCULATOR</h1>
+    
+    <table cellspacing="8" align="center">
+        <tr>
+            <th colspan="4" >
+                <input type="text" id="text"></th>
+
+        </tr>
+        <tr>
+            <td><button type="button" id="btn" onclick ="button7()">7</button></td>
+            <td><button type="button" id="btn" onclick ="button8()">8</button></td>
+            <td><button type="button" id="btn" onclick ="button9()">9</button></td>
+            <td><button type="button" id="btn" onclick ="buttondiv()">/</button></td>
+            
+        </tr>
+        <tr>
+            <td><button type="button" id="btn" onclick ="button4()">4</button></td>
+            <td><button type="button" id="btn" onclick ="button5()">5</button></td>
+            <td><button type="button" id="btn" onclick ="button6()">6</button></td>
+            <td><button type="button" id="btn" onclick ="buttonmul()">*</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="btn" onclick ="button1()">1</button></td>
+            <td><button type="button" id="btn" onclick ="button2()">2</button></td>
+            <td><button type="button" id="btn" onclick ="button3()">3</button></td>
+            <td><button type="button" id="btn" onclick ="buttonsub()">-</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="btn"onclick ="button0()" >0</button></td>
+            <td><button type="button" id="btn" onclick ="buttonclear()">clear</button></td>
+            <td><button type="button" id="btn" onclick ="buttonadd()">+</button></td>
+            <td><button type="button" id="btn" onclick ="buttonequal()">=</button></td>
+        </tr>
+    </table>
+ 
+    <script>
+        var input=document.getElementById("text");
+        // input.value="xys";
+        // function buttonadd(){
+        //      input.value+="+";
+        //  }
+         function buttonsub(){
+            input.value+="-";
+         }
+         function buttonmul(){
+            input.value+="*";
+         }
+         function button1(){
+            input.value+="1";
+         }
+         function button2(){
+            input.value+="2";
+         }
+         function button3(){
+            input.value+="3";
+         }
+         function button4(){
+            input.value+="4";
+         }
+
+         function button5(){
+            input.value+="5";
+         }
+
+         function button6(){
+            input.value+="6";
+         }
+
+         function button7(){
+            input.value+="7";
+
+         }
+
+         function button8(){
+            input.value+="8";
+         }
+
+         function button9(){
+            input.value+="9";
+         }
+         function button0(){
+            input.value+="0";
+         }
+         function buttonclear(){
+            input.value = "";
+         }
+         function buttonequal(){
+            input.value=eval(input.value);
+         }
+         function buttondiv(){
+            input.value+="/";
+         }
+    </script>
+    
+</body>
+</html>

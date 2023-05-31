@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+         5) Create a cascading dropdown, where one will have to first select a Subject, then
+        based on the subject, Topics will be populated, and then on the basis of selected
+        topic, Chapters will be populated. In the implementation, available Subjects will be
+        Front-end and Back-end. In Front-end, available topics will be HTML, CSS, Javascript,
+        and in Back-end, available subjects will be NodeJS and PHP. In HTML, Chapters will
+        be Links, Images, Tables, Lists. In CSS, Chapters will be Borders, Margins,
+        Backgrounds. In Javascript, Chapters will be Variables, Operators, Arrays, Objects. In
+        NodeJS, Chapters will be NPM, HTTP, Express. In PHP, Chapters will be Strings,
+        Arrays, Regex.
+    </p>
+    
+    <form name="form1" id="form1" action="/action_page.php">
+        Subjects: <select name="subject" id="subject">
+          <option value="" selected="selected">Select subject</option>
+        </select>
+        <br><br>
+
+        Topics: <select name="topic" id="topic">
+          <option value="" selected="selected">Please select subject first</option>
+        </select>
+        <br><br>
+
+        Chapters: <select name="chapter" id="chapter">
+          <option value="" selected="selected">Please select topic first</option>
+
+        </select>
+        <br><br>
+
+        <input type="submit" value="Submit">
+      </form>
+   
+
+      <script>
+            var subjectObject = {
+            "Front-end": {
+                "HTML": ["Links", "Images", "Tables", "Lists"],
+                "CSS": ["Borders", "Margins", "Backgrounds"],
+                "JavaScript": ["Variables", "Operators", "Objects"]
+            },
+            "Back-end": {
+                "NodeJS": ["NPM", "HTTP", "Express"],
+                "SQL": ["String", "Array", "Regex"]
+            }
+            }
+            window.onload = function() {
+            var subjectSel = document.getElementById("subject");
+            var topicSel = document.getElementById("topic");
+            var chapterSel = document.getElementById("chapter");
+            for (var x in subjectObject) {
+                subjectSel.options[subjectSel.options.length] = new Option(x, x);
+            }
+            subjectSel.onchange = function() {
+                //empty Chapters- and Topics- dropdowns
+                chapterSel.length = 1;
+                topicSel.length = 1;
+                //display correct values
+                for (var y in subjectObject[this.value]) {
+                topicSel.options[topicSel.options.length] = new Option(y, y);
+                }
+            }
+            topicSel.onchange = function() {
+                //empty Chapters dropdown
+                chapterSel.length = 1;
+                //display correct values
+                var z = subjectObject[subjectSel.value][this.value];
+                for (var i = 0; i < z.length; i++) {
+                chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+                }
+            }
+            }
+      </script>
+    
+</body>
+</html>

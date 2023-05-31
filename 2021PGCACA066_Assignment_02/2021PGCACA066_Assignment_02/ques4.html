@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            table td{
+                height:60px;
+                width:250px;
+            }
+            table td input{
+                height:60px;
+                width:250px;
+                border: 1px solid red;
+            
+            }
+            .button{
+                margin-top:10px;
+                padding:14px 32px;
+            }
+            .button:hover{
+                background-color: rgb(172, 185, 24);
+            }
+          
+        </style>
+    </head>
+    <body>
+        <p>< 4) Create an HTML form that will input name, password, repeat password, email, dob
+            field. On submit, Javascript will validate the password, such as checking whether
+            password and repeat password are same, password should be of more than 8
+            characters, and it must contain at least one digit, at least one uppercase alphabet,
+            and at least one lowercase alphabet.</p>
+        <center><h1 > Validation Form</h1></center>
+        
+        <center>
+            <table>
+                <tr>
+                    <td>Name :</td>
+                    <td><input type="text"  id="name"></td>
+                </tr>
+                <tr>
+                    <td>Password :</td>
+                    <td><input type="password"  id="password"></td>
+                </tr>
+                <tr>
+                    <td>Repeat Password :</td>
+                    <td><input type="password" value="" id="password2"></td>
+                </tr>
+                <tr>
+                    <td>Email :</td>
+                    <td><input type="email" value="" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Dob :</td>
+                    <td><input type="date" value="" id="date"></td>
+
+                </tr>
+                
+            </table>
+        </center>
+
+        
+        <center>
+            <button class="button" onclick="fun()" id="submit">Submit</button>
+        </center>
+
+        <center><p id="error"></p></center>
+        <script>
+
+            function fun(){
+                let password=document.getElementById("password").value;
+                let password2=document.getElementById("password2").value;
+                let name=document.getElementById("name").value;
+                let email=document.getElementById("email").value;
+                let date=document.getElementById("date").value;
+                
+                if(password.length < 8){
+                    document.getElementById("error").innerHTML="**Password must contain A lowerCase,A upperCase ,A Digit and should be more than 8 characters";
+                   
+                }
+
+                if(password!="" && password2!=""){
+                    if(password!=password2){  
+                        document.getElementById("error").innerHTML="Password must be Same";
+                    }
+            }
+                
+
+                let lowercase = 'abcdefgh.....xyz';
+                let uppercase = 'ABCDEFGH.....XYZ';
+                let digit = '1234567890';
+            
+
+                if (!containsValidCharacter(password, lowercase)) {
+                    document.getElementById("error").innerHTML="**Password must contain A lowerCase,A upperCase ,A Digit and should be more than 8 characters";
+                }
+            
+
+
+                if (!containsValidCharacter(password, uppercase)) {
+                    document.getElementById("error").innerHTML="**Password must contain A lowerCase,A upperCase ,A Digit and should be more than 8 characters"
+                }
+                
+                if (!containsValidCharacter(password, digit)) {
+                    document.getElementById("error").innerHTML="**Password must contain A lowerCase,A upperCase ,A Digit and should be more than 8 characters"
+                }
+                
+                
+                function containsValidCharacter(stringToTest, validCharacters) {
+                    for (var i = 0; i < stringToTest.length; i++) {
+                        if (validCharacters.indexOf(stringToTest.charAt(i)) !== -1) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+              
+        }
+        
+        </script>
+        
+    </body>
+</html>

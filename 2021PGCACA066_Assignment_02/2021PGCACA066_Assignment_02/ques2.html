@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+          
+            border:solid;
+            height:400px;
+            width:400px;
+            font-size:40px;
+        }
+    </style>
+</head>
+<body>
+    <p>2) Read date of some event from a datepicker in HTML, and calculate its age using Date
+        library of Javascript, on date selection. Populate a textbox below the datepicker with
+        the calculated age, whenever someone will select a date.</p>
+        <h1><center>Calculation of age from Date</center></h1>
+    <center>
+    <div id="container">
+    Select the Date ::
+    <input type="date" id="date" onmouseover="findage()">
+    <br>
+    
+        Age:
+        <br>
+        <input type="text" id="output" >
+    </div>
+</center>
+<script>
+    function findage(){
+        var date=document.getElementById("date").value;
+        var dob=new Date(date);
+        var day=new Date();
+        var age=day.getTime()-dob.getTime();
+        age=Math.floor(age/(1000* 60 * 60 * 24 *365.25));
+        document.getElementById("output").value=age;
+    }
+</script>
+
+
+    
+    
+</body>
+</html>
