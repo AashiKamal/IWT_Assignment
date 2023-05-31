@@ -1,0 +1,156 @@
+<html>
+	<head>
+		<title>this is lab assignment</title>
+		<style>
+			
+			#container{
+				height: 60%;
+				width: 40%;
+				padding: 20px;
+				background-color: lightsalmon;
+				border-radius: 10px;
+				margin-left: 25%;
+				margin-top: 5%;
+			}
+
+			#table{
+				height: 100%;
+				width: 100%;
+			}
+
+			td{
+				text-align: center;
+				
+			}
+
+			input{
+				text-align: center;
+				height: 20%;
+				width: ;
+			}
+
+			.operations{
+				height: 100%;
+				width: 100%;
+				background-color: lightgoldenrodyellow;
+				font-weight: bold;
+				font-size: 20px;
+			}
+
+			#input,#output{
+				font-size: 20px;
+				font-weight: bold;
+				width: 60%;
+				height: 50%;
+				background-color: lightgray;
+				color: black;
+				border-radius: 10px;
+			}
+
+			input:hover{
+				background-color: lightgreen;
+			}
+
+		</style>
+	</head>
+	<body>
+		
+		<h3 id="question">10. Create a text input, and input a vector from user. Create 5 buttons named “Average”, “Sum”,
+			“Product”, “Max” and “Min” respectively, that will perform the task mentioned in the button names, on
+			the array. On press of the button, the output should be shown in another textbox below the pressed button
+			(these textboxes should not be visible by default). The complete page should be centered horizontally.
+			The buttons should get green background on hovering over them. These tasks must be done using reduce
+			function.
+		<hr/>
+	
+		<div id="container">
+			<form>
+				<table id="table" border="1px">
+					<tr height="30%"><td colspan="5"><input id="input" type="textfield" placeholder="e.g. 1,2,3,4,5.."/></td></tr>
+					
+					<tr id="buttons" height="30%">
+						<td><input type="button" value="ADDITION" class="operations"/></td>
+						<td><input type="button" value="AVERAGE" class="operations"/></td>
+						<td><input type="button" value="MINIMUM" class="operations"/></td>
+						<td><input type="button" value="MAXIMUM" class="operations"/></td>
+						<td><input type="button" value="PRODUCT" class="operations"/></td>
+					</tr>
+
+					<tr><td colspan="5"><input id="output" type="text" style="visibility: none"/></td></tr>
+				</table>
+			</form>
+
+		</div>
+
+		<script>
+
+			let buttons=document.getElementsByClassName("operations");
+			buttons[0].addEventListener("click",add);
+			buttons[1].addEventListener("click",avg);
+			buttons[2].addEventListener("click",min);
+			buttons[3].addEventListener("click",max);
+			buttons[4].addEventListener("click",mul);
+
+			//ip.value = input[0];
+
+			function add(){
+				let input = document.getElementById("input").value.split(",").map(Number);
+				let ans = input.reduce((acc,cur)=>{
+					return acc += cur;
+				})
+
+				display(ans);
+			}
+
+			function avg(){
+				let input = document.getElementById("input").value.split(",").map(Number);
+				let ans = input.reduce((acc,cur)=>{
+					return acc += cur;
+				});
+
+				
+				ans /= input.length;
+				display(ans);
+			}
+
+			function min(){
+				let ans = 0;
+				let input = document.getElementById("input").value.split(",").map(Number);
+				ans = input.reduce((acc,cur)=>{
+					return Math.min(acc,cur);
+				});
+				display(ans);
+
+			}
+
+			function max(){
+				let ans = 0;
+				let input = document.getElementById("input").value.split(",").map(Number);
+				ans = input.reduce((acc,cur)=>{
+					return Math.max(acc,cur);
+				});
+				display(ans);
+			}
+
+			function mul(){
+				let ans = 0;
+				let input = document.getElementById("input").value.split(",").map(Number);
+				ans = input.reduce((acc,cur)=>{
+					return acc * cur;
+				});
+				display(ans);
+
+			}
+
+			function display(ans){
+				let input = document.getElementById("input").value.split(",").map(Number);
+				let output = document.getElementById("output");
+				output.value = ans;
+				//output.style.visibility= "visible";
+			}
+
+		</script>
+	</body>
+</html>
+
+
